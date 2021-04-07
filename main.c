@@ -116,14 +116,14 @@ int main(void)
     // parse channel number
     parse_ch_num(buffer, ch_num);
 
-    // // connect to top channel
-    // get_com_conn_to_ch(buffer, ch_num);
-    // send_to_wscat(buffer);
-
-    // connect to own channel
-    strcpy(ch_num, "168057");
+    // connect to top channel
     get_com_conn_to_ch(buffer, ch_num);
     send_to_wscat(buffer);
+
+    // // connect to own channel
+    // strcpy(ch_num, "168057");
+    // get_com_conn_to_ch(buffer, ch_num);
+    // send_to_wscat(buffer);
 
     // enable led indicating successful connection to the chat server
     ioctl(fd, CMD_CONTROL_LED, CMD_CONTROL_LED_ARG_ON);
