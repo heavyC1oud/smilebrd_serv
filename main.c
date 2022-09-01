@@ -70,8 +70,7 @@ int main(void)
     pid = fork();
 
     // child process
-    if (pid == 0)
-    {
+    if(pid == 0) {
         // duplicate pipes
         dup2(pipe_stdin[0], STDIN_FILENO);
         dup2(pipe_stdout[1], STDOUT_FILENO);
@@ -119,11 +118,6 @@ int main(void)
     // connect to top channel
     get_com_conn_to_ch(buffer, ch_num);
     send_to_wscat(buffer);
-
-    // // connect to own channel
-    // strcpy(ch_num, "168057");
-    // get_com_conn_to_ch(buffer, ch_num);
-    // send_to_wscat(buffer);
 
     // enable led indicating successful connection to the chat server
     ioctl(fd, CMD_CONTROL_LED, CMD_CONTROL_LED_ARG_ON);
